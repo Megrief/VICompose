@@ -1,6 +1,5 @@
 package com.vicompose.data.repository
 
-import android.util.Log
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
@@ -23,10 +22,6 @@ class SearchRemoteMediator(
     private val query: String
 ) : RemoteMediator<Int, ImageDto>() {
 
-    init {
-        Log.wtf("AAAAA", "in remoteMediator init")
-    }
-
     override suspend fun initialize(): InitializeAction {
         val timeout = TimeUnit.MINUTES.convert(30, TimeUnit.MILLISECONDS)
         val lastCreated = db.remoteKeyDao.getLastRemoteKeyCreated() ?: 0
@@ -40,7 +35,6 @@ class SearchRemoteMediator(
         state: PagingState<Int, ImageDto>
     ): MediatorResult {
 
-        Log.wtf("AAAAA", "in remoteMediator load")
         val page = when (loadType) {
             LoadType.REFRESH -> {
                 val remoteKeys = getRemoteKeyClosestToCurrentPosition(state)
@@ -64,7 +58,6 @@ class SearchRemoteMediator(
         return try {
             val apiResponse = service.search(query, page)
 
-            Log.wtf("AAAAA", "in remoteMediator results")
             val images = apiResponse.images
             val endOfPaginationReached = images.isEmpty()
 

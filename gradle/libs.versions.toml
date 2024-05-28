@@ -18,6 +18,7 @@ kspVersion = "1.9.0-1.0.13"
 roomVersion = "2.6.1"
 coil = "2.6.0"
 uiTextGoogleFonts = "1.6.7"
+composeVersion = "1.7.0-alpha07"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -48,6 +49,8 @@ coil = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil"}
 androidx-ui-text-google-fonts = { group = "androidx.compose.ui", name = "ui-text-google-fonts", version.ref = "uiTextGoogleFonts" }
 koin-compose = { group = "io.insert-koin", name = "koin-androidx-compose", version.ref = "koinVersion" }
 paging-compose = { group = "androidx.paging", name = "paging-compose", version.ref = "paging" }
+compose-ui = { group = "androidx.compose.ui", name = "ui", version.ref = "composeVersion" }
+compose-animation = { group = "androidx.compose.animation", name = "animation", version.ref = "composeVersion" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -9,8 +9,8 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -19,8 +19,12 @@ import androidx.compose.ui.unit.dp
 import com.vicompose.ui.theme.ViComposeTheme
 
 @Composable
-fun SearchField(modifier: Modifier = Modifier, onSearch: (String) -> Unit = { }, state: MutableState<String>) {
-    var text by remember { state }
+fun SearchField(
+    modifier: Modifier = Modifier,
+    onSearch: (String) -> Unit = { },
+    state: String
+) {
+    var text by remember { mutableStateOf(state) }
 
     OutlinedTextField(
         modifier = modifier
@@ -32,7 +36,6 @@ fun SearchField(modifier: Modifier = Modifier, onSearch: (String) -> Unit = { },
             focusedTextColor = MaterialTheme.colorScheme.onPrimaryContainer,
             unfocusedTextColor = MaterialTheme.colorScheme.onPrimaryContainer,
             cursorColor = MaterialTheme.colorScheme.onPrimaryContainer,
-            focusedBorderColor = MaterialTheme.colorScheme.onPrimary,
         ),
         shape = RoundedCornerShape(16.dp),
         value = text,
@@ -41,7 +44,7 @@ fun SearchField(modifier: Modifier = Modifier, onSearch: (String) -> Unit = { },
             onSearch(it)
         },
         textStyle = MaterialTheme.typography.bodyLarge,
-        maxLines = 1,
+        singleLine  =  true,
     )
 }
 

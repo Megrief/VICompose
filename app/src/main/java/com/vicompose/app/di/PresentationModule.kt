@@ -14,12 +14,6 @@ val presentationModule = module {
 
         )
     }
-//
-//    viewModel {
-//        ImageViewModel(
-//            searchRepo = get()
-//        )
-//    }
 
     factory<ConnectivityManager?> {
         ContextCompat.getSystemService(androidContext(), ConnectivityManager::class.java)

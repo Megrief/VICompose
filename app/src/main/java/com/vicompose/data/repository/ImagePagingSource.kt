@@ -3,7 +3,6 @@ package com.vicompose.data.repository
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.vicompose.core.entity.Image
-import com.vicompose.data.network.dto.ImageResponse
 import com.vicompose.data.network.service.SerperApiService
 import com.vicompose.data.util.toImage
 import retrofit2.HttpException

@@ -1,31 +1,18 @@
 package com.vicompose.ui.elements
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.paddingFrom
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Close
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.layout.HorizontalAlignmentLine
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.unit.dp
 import androidx.paging.compose.LazyPagingItems
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
@@ -38,7 +25,7 @@ fun ImagePager(
     modifier: Modifier = Modifier,
     images: LazyPagingItems<Image>,
     index: Int,
-    onClose: (Int) -> Unit,
+    navigate: (Int) -> Unit,
     openInWeb: (String) -> Unit
 ) {
     HorizontalPager(
@@ -66,7 +53,7 @@ fun ImagePager(
             val position = image?.position?.minus(1) ?: 0
             ImagePagerButtons(
                 modifier = Modifier.align(Alignment.BottomEnd),
-                onClose = { onClose(position) },
+                onClose = { navigate(position) },
                 openInWeb = { openInWeb(image?.link ?: "") }
             )
 

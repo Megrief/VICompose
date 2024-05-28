@@ -20,15 +20,18 @@ fun GridImages(
     position: Int
 ) {
     LazyVerticalGrid(
-        columns = GridCells.Fixed(2),
         modifier = modifier,
+        columns = GridCells.Fixed(2),
         contentPadding = PaddingValues(16.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         verticalArrangement  = Arrangement.spacedBy(8.dp),
-        state = rememberLazyGridState(initialFirstVisibleItemIndex = position)
+        state = rememberLazyGridState(initialFirstVisibleItemIndex = position + 1)
     ) {
         items(count = images.itemCount) { index ->
-            ImageInGrid(image = images[index], onClick  =  { onClick(images[index]?.position?.minus(1) ?: 0) })
+            ImageInGrid(
+                modifier = Modifier,
+                image = images[index],
+                onClick  =  { onClick(images[index]?.position?.minus(1) ?: 0) })
         }
     }
 }

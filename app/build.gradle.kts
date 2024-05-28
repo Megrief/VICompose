@@ -68,17 +68,38 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    // Coroutines
     implementation(libs.kotlinx.coroutines)
-    implementation(libs.paging)
+
+    // Retrofit
     implementation(libs.retrofit)
     implementation(libs.retrofit.converter)
+
+    // Room
     implementation(libs.room.runtime)
     ksp(libs.room.compiler)
     implementation(libs.room.paging)
     implementation(libs.room.ktx)
+
+    // Navigation
     implementation(libs.navigation.compose)
+
+    //ChromeTabs
     implementation(libs.androidx.browser)
+
+    // Coil
     implementation(libs.coil)
+
+    // Koin
     implementation(libs.koin.compose)
+
+    // Paging
+    implementation(libs.paging)
     implementation(libs.paging.compose)
+
+    // Compose Animation
+    implementation(libs.compose.ui)
+    implementation(libs.compose.animation)
+
 }
