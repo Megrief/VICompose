@@ -1,5 +1,6 @@
 package com.vicompose.ui.elements
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -9,6 +10,7 @@ import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -51,6 +53,14 @@ fun ImagePager(
 
             val image = images[pos]
             val position = image?.position?.minus(1) ?: 0
+
+            var handleBackPressed = remember { true }
+            BackHandler(enabled = handleBackPressed) {
+                navigate(position)
+                handleBackPressed = false
+            }
+
+
             ImagePagerButtons(
                 modifier = Modifier.align(Alignment.BottomEnd),
                 onClose = { navigate(position) },

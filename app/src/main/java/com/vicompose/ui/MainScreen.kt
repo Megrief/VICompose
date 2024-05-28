@@ -1,6 +1,5 @@
 package com.vicompose.ui
 
-import android.util.Log
 import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.animation.SharedTransitionLayout
 import androidx.compose.animation.core.tween
@@ -28,9 +27,7 @@ fun MainScreen() {
 
         val navController = rememberNavController()
         val boundsTransform = { _: Rect, _: Rect -> tween<Rect>(500) }
-        val images = viewModel.imageFlow.value.collectAsLazyPagingItems().also {
-            Log.wtf("AAAAA", "Images acquired")
-        }
+        val images = viewModel.imageFlow.value.collectAsLazyPagingItems()
 
         NavHost(navController = navController, startDestination = "search/{position}") {
             composable(
@@ -40,7 +37,6 @@ fun MainScreen() {
 
                 val position = backStackEntry.arguments?.getInt("position")?: 0
 
-                Log.wtf("AAAAA",  "Position  search $position")
                 SearchScreenContainer(
                     modifier = Modifier.sharedElement(
                         state = rememberSharedContentState(key = "image-$position"),
@@ -62,10 +58,8 @@ fun MainScreen() {
                 route = "pager/{position}",
                 arguments = listOf(navArgument("position") { type = NavType.IntType})
             )  { backStackEntry ->
-
                 val position = backStackEntry.arguments?.getInt("position") ?: 0
 
-                Log.wtf("AAAAA",  "Position pager $position")
                 ImagePagerContainer(
                     modifier = Modifier.sharedElement(
                         state = rememberSharedContentState(key = "image-$position"),
