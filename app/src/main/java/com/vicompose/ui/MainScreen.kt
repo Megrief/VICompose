@@ -44,7 +44,7 @@ fun MainScreen() {
                         boundsTransform = boundsTransform
                     ),
                     navigate = { newPosition ->
-                        viewModel.position.value = newPosition
+                        viewModel.position.intValue = newPosition
                         navController.navigate("pager/$newPosition")
                     },
                     images  = images,
