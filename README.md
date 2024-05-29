@@ -10,6 +10,7 @@
  - Retrofit2
  - OkHttp3
  - Coroutines
+ - MVVM
  - Room (для ветки с кешированием результатов)
  - Paging3
  - Shared Elements Transitions
