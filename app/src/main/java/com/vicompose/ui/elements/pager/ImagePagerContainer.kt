@@ -1,4 +1,4 @@
-package com.vicompose.ui.elements
+package com.vicompose.ui.elements.pager
 
 import android.content.Context
 import androidx.compose.foundation.layout.fillMaxSize

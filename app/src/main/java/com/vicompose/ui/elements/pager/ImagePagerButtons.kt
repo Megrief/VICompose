@@ -1,4 +1,4 @@
-package com.vicompose.ui.elements
+package com.vicompose.ui.elements.pager
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement

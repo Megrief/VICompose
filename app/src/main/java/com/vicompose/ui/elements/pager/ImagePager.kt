@@ -1,4 +1,4 @@
-package com.vicompose.ui.elements
+package com.vicompose.ui.elements.pager
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -52,7 +52,7 @@ fun ImagePager(
             )
 
             val image = images[pos]
-            val position = image?.position?.minus(1) ?: 0
+            val position = image?.position ?: 0
 
             var handleBackPressed = remember { true }
             BackHandler(enabled = handleBackPressed) {

@@ -17,7 +17,7 @@
         android:theme="@style/Theme.VICompose"
         tools:targetApi="31">
         <activity
-            android:name="com.vicompose.MainActivity"
+            android:name="com.vicompose.ui.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.VICompose">
             <intent-filter>

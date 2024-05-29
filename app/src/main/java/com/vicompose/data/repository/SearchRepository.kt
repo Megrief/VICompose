@@ -15,17 +15,17 @@ const val PAGE_SIZE = 10
 class SearchRepository(
     private val service: SerperApiService,
     private val db: VeryInterestingDb,
-) : SearchUseCase {
+) : SearchUseCase<ImageDto> {
 
     @OptIn(ExperimentalPagingApi::class)
     override suspend fun search(query: String): Flow<PagingData<ImageDto>> = Pager(
             config = PagingConfig(
                 pageSize = PAGE_SIZE,
                 enablePlaceholders = false,
+                prefetchDistance = PAGE_SIZE * 2
             ),
             remoteMediator = SearchRemoteMediator(service  = service, db = db, query  = query),
             pagingSourceFactory = {
-//                ImagePagingSource(service = service, query = query)
                 db.imageDao.getImages(query)
             }
         ).flow
