@@ -1,7 +1,9 @@
 # VICompose
+Небольшое тестовое приложение. Для поиска картинок с использованием api <https://serper.dev/>
+
+
 Переписанный на Compose проект VeryInterestingTest: <https://github.com/Megrief/VeryInterestingTest>. Посмотреть процесс разработки можно в исходном проекте.
 
-Небольшое тестовое приложение. Для поиска картинок с использованием api <https://serper.dev/>
 
 Стек:
  - Kotlin
