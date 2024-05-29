@@ -50,7 +50,6 @@ fun MainScreen() {
                     },
                     images  = images,
                     searchState =
-//                    viewModel.savedQuery.value,
                     viewModel.uiState.value.savedQuery,
                     onSearch = { query -> viewModel.search(query) },
                     position = position

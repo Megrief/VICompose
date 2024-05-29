@@ -13,7 +13,6 @@ import com.vicompose.core.entity.Image
 import com.vicompose.core.usecases.SearchUseCase
 import com.vicompose.util.debounce
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
 
 class SearchViewModel(
@@ -23,16 +22,13 @@ class SearchViewModel(
     private val _uiState: MutableState<UiState>  = mutableStateOf(UiState())
     val uiState: State<UiState> get() = _uiState
 
-    private var lastQuery: String? = null
-
     private val searchRequest: (String) -> Unit = debounce(SEARCH_DELAY, viewModelScope, true) { query ->
-        _uiState.value = uiState.value.copy(savedQuery = query)
         viewModelScope.launch(Dispatchers.IO) {
-            if (query != lastQuery) {
-                lastQuery = query
+            if (query != uiState.value.savedQuery) {
                 val imageFlow = searchRepo.search(query = query).cachedIn(viewModelScope)
                 _uiState.value = uiState.value.copy(
-                    imageFlow = imageFlow
+                    imageFlow = imageFlow,
+                    savedQuery = query
                 )
             }
         }

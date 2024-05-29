@@ -1,10 +1,7 @@
 package com.vicompose.app.di
 
-import androidx.room.Room
 import com.vicompose.data.network.service.SerperApiService
-import com.vicompose.data.room.db.VeryInterestingDb
 import okhttp3.OkHttpClient
-import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -39,13 +36,5 @@ val dataModule = module {
     single<SerperApiService> {
         val retrofit: Retrofit = get()
         retrofit.create(SerperApiService::class.java)
-    }
-
-    single<VeryInterestingDb> {
-        Room.databaseBuilder(
-            context = androidContext(),
-            klass = VeryInterestingDb::class.java,
-            name = "very_interesting.db"
-        ).build()
     }
 }

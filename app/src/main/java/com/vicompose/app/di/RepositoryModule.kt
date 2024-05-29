@@ -11,8 +11,7 @@ val repositoryModule = module {
 
     factory<SearchUseCase<Image>>(named(SEARCH_IMAGES)) {
         SearchRepository(
-            service = get(),
-            db = get(),
+            service = get()
         )
     }
 }
