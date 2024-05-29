@@ -20,8 +20,7 @@ android {
             useSupportLibrary = true
         }
 
-        val apiToken = "\"becd76ebe912ab28d2bb64715ce960d11fcc1a87\""
-        buildConfigField(type = "String", name = "SERPER_API_TOKEN", value = apiToken)
+        buildConfigField(type = "String", name = "SERPER_API_TOKEN", value = "\"becd76ebe912ab28d2bb64715ce960d11fcc1a87\"")
     }
 
     buildTypes {
