@@ -18,3 +18,7 @@
  - Shared Elements Transitions
 
 Ввиду некорректной работы кеширования с RemoteMediator, выделил его в отдельную ветку [with_caching](https://github.com/Megrief/VICompose/tree/with_caching). В основной оставил пагинацию без кеширования.
+
+Остались некоторые недочеты, не особо влияющие на результат, но которые хочется упомянуть:
+ - Shared Elements привязан не к элементам списков, а к контейнерам, т.к. SharedTransitionLayout не видит картинку в ленивом списке. Ошибка отображения: updateAcquireFence: Did not find frame compose
+ - При долгом пролистывании элементов в Pager неточно передается позиция элемента обратно в Grid.
