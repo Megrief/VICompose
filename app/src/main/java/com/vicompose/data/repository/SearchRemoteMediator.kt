@@ -9,7 +9,7 @@ import com.vicompose.data.network.service.SerperApiService
 import com.vicompose.data.room.db.VeryInterestingDb
 import com.vicompose.data.room.dto.ImageDto
 import com.vicompose.data.room.dto.RemoteKey
-import com.vicompose.data.util.toImageDto
+import com.vicompose.util.toImageDto
 import retrofit2.HttpException
 import java.io.IOException
 import java.util.concurrent.TimeUnit

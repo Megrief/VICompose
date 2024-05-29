@@ -1,4 +1,4 @@
-package com.vicompose.presetation.util
+package com.vicompose.util
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job

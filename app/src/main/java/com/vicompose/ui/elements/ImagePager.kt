@@ -52,14 +52,13 @@ fun ImagePager(
             )
 
             val image = images[pos]
-            val position = image?.position?.minus(1) ?: 0
+            val position = image?.position ?: 0
 
             var handleBackPressed = remember { true }
             BackHandler(enabled = handleBackPressed) {
                 navigate(position)
                 handleBackPressed = false
             }
-
 
             ImagePagerButtons(
                 modifier = Modifier.align(Alignment.BottomEnd),

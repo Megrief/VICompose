@@ -28,9 +28,7 @@ fun ImagePagerContainer(
             modifier = modifier,
             images = images,
             index = position,
-            navigate = {
-                navigate(position)
-            },
+            navigate = { navigate(position) },
             openInWeb = { onOpenInWeb(context, it) }
         )
     }

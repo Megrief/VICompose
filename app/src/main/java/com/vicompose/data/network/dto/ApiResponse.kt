@@ -1,6 +1,8 @@
 package com.vicompose.data.network.dto
 
+import com.google.gson.annotations.SerializedName
+
 data class ApiResponse(
-    val searchParameters: SearchParameters,
+    @SerializedName("images")
     val images: List<ImageResponse>
 )

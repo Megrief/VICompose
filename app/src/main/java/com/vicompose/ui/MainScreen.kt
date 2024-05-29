@@ -27,7 +27,7 @@ fun MainScreen() {
 
         val navController = rememberNavController()
         val boundsTransform = { _: Rect, _: Rect -> tween<Rect>(500) }
-        val images = viewModel.imageFlow.value.collectAsLazyPagingItems()
+        val images = viewModel.uiState.value.imageFlow.collectAsLazyPagingItems()
 
         NavHost(navController = navController, startDestination = "search/{position}") {
             composable(
@@ -35,7 +35,8 @@ fun MainScreen() {
                 arguments = listOf(navArgument("position") { type = NavType.IntType})
             ) { backStackEntry  ->
 
-                val position = backStackEntry.arguments?.getInt("position")?: 0
+                val position = backStackEntry.arguments?.getInt("position")
+                    ?: viewModel.uiState.value.position
 
                 SearchScreenContainer(
                     modifier = Modifier.sharedElement(
@@ -44,11 +45,13 @@ fun MainScreen() {
                         boundsTransform = boundsTransform
                     ),
                     navigate = { newPosition ->
-                        viewModel.position.intValue = newPosition
+                        viewModel.onNavigate(newPosition)
                         navController.navigate("pager/$newPosition")
                     },
                     images  = images,
-                    searchState = viewModel.savedQuery.value,
+                    searchState =
+//                    viewModel.savedQuery.value,
+                    viewModel.uiState.value.savedQuery,
                     onSearch = { query -> viewModel.search(query) },
                     position = position
                 )
@@ -58,7 +61,8 @@ fun MainScreen() {
                 route = "pager/{position}",
                 arguments = listOf(navArgument("position") { type = NavType.IntType})
             )  { backStackEntry ->
-                val position = backStackEntry.arguments?.getInt("position") ?: 0
+                val position = backStackEntry.arguments?.getInt("position")
+                    ?: viewModel.uiState.value.position
 
                 ImagePagerContainer(
                     modifier = Modifier.sharedElement(
@@ -68,7 +72,10 @@ fun MainScreen() {
                     ),
                     position = position,
                     onOpenInWeb = { context, url -> viewModel.openInWeb(context, url) },
-                    navigate = { newPosition -> navController.navigate("search/$newPosition") },
+                    navigate = { newPosition ->
+                        viewModel.onNavigate(newPosition)
+                        navController.navigate("search/$newPosition")
+                    },
                     images = images
                 )
             }

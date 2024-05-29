@@ -14,7 +14,7 @@ const val PAGE_SIZE = 10
 class SearchRepository(
     private val service: SerperApiService,
     private val db: VeryInterestingDb,
-) : SearchUseCase {
+) : SearchUseCase<Image> {
 
     override suspend fun search(query: String): Flow<PagingData<Image>> {
         return Pager(

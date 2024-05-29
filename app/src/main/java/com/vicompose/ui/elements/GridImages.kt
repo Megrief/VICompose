@@ -25,13 +25,13 @@ fun GridImages(
         contentPadding = PaddingValues(16.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         verticalArrangement  = Arrangement.spacedBy(8.dp),
-        state = rememberLazyGridState(initialFirstVisibleItemIndex = position + 1)
+        state = rememberLazyGridState(initialFirstVisibleItemIndex = position)
     ) {
         items(count = images.itemCount) { index ->
             ImageInGrid(
                 modifier = Modifier,
                 image = images[index],
-                onClick  =  { onClick(images[index]?.position?.minus(1) ?: 0) })
+                onClick  =  { onClick(images[index]?.position ?: 0) })
         }
     }
 }
