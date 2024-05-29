@@ -1,12 +1,12 @@
 package com.vicompose.app.di
 
+import com.example.vicompose.BuildConfig
 import com.vicompose.data.network.service.SerperApiService
 import okhttp3.OkHttpClient
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-private const val ACCESS_TOKEN = "becd76ebe912ab28d2bb64715ce960d11fcc1a87"
 private const val BASE_URL = "https://google.serper.dev"
 
 val dataModule = module {
@@ -26,7 +26,7 @@ val dataModule = module {
                     proceed(
                         request()
                             .newBuilder()
-                            .addHeader("X-API-KEY", ACCESS_TOKEN)
+                            .addHeader("X-API-KEY", BuildConfig.SERPER_API_TOKEN)
                             .build()
                     )
                 }

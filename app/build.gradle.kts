@@ -19,6 +19,9 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
+        val apiToken = "\"becd76ebe912ab28d2bb64715ce960d11fcc1a87\""
+        buildConfigField(type = "String", name = "SERPER_API_TOKEN", value = apiToken)
     }
 
     buildTypes {
@@ -38,6 +41,7 @@ android {
         jvmTarget = "1.8"
     }
     buildFeatures {
+        buildConfig = true
         compose = true
     }
     composeOptions {
