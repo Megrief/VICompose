@@ -3,6 +3,7 @@ package com.vicompose.ui
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import com.vicompose.ui.elements.MainScreen
 import com.vicompose.ui.theme.ViComposeTheme
 
 class MainActivity : ComponentActivity() {

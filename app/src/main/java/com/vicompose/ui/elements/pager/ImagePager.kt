@@ -1,4 +1,4 @@
-package com.vicompose.ui.elements
+package com.vicompose.ui.elements.pager
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.ExperimentalFoundationApi

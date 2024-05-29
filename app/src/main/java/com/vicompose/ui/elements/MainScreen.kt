@@ -1,4 +1,4 @@
-package com.vicompose.ui
+package com.vicompose.ui.elements
 
 import androidx.compose.animation.ExperimentalSharedTransitionApi
 import androidx.compose.animation.SharedTransitionLayout
@@ -14,8 +14,8 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.vicompose.presetation.SearchViewModel
-import com.vicompose.ui.elements.ImagePagerContainer
-import com.vicompose.ui.elements.SearchScreenContainer
+import com.vicompose.ui.elements.grid.SearchScreenContainer
+import com.vicompose.ui.elements.pager.ImagePagerContainer
 import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalSharedTransitionApi::class)

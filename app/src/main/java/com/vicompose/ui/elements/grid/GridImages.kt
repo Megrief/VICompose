@@ -1,4 +1,4 @@
-package com.vicompose.ui.elements
+package com.vicompose.ui.elements.grid
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
