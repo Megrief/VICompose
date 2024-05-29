@@ -24,7 +24,7 @@ class SearchViewModel(
 
     private val searchRequest: (String) -> Unit = debounce(SEARCH_DELAY, viewModelScope, true) { query ->
         viewModelScope.launch(Dispatchers.IO) {
-            if (query != uiState.value.savedQuery) {
+            if (query != uiState.value.savedQuery && query.isNotBlank()) {
                 val imageFlow = searchRepo.search(query = query).cachedIn(viewModelScope)
                 _uiState.value = uiState.value.copy(
                     imageFlow = imageFlow,
