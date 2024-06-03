@@ -5,6 +5,7 @@ import androidx.compose.animation.SharedTransitionLayout
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Rect
 import androidx.navigation.NavType
@@ -25,9 +26,11 @@ fun MainScreen() {
 
     SharedTransitionLayout(modifier = Modifier.fillMaxSize()) {
 
+        val state = viewModel.uiState.collectAsState()
+
         val navController = rememberNavController()
         val boundsTransform = { _: Rect, _: Rect -> tween<Rect>(500) }
-        val images = viewModel.uiState.value.imageFlow.collectAsLazyPagingItems()
+        val images = state.value.imageFlow.collectAsLazyPagingItems()
 
         NavHost(navController = navController, startDestination = "search/{position}") {
             composable(
@@ -36,7 +39,7 @@ fun MainScreen() {
             ) { backStackEntry  ->
 
                 val position = backStackEntry.arguments?.getInt("position")
-                    ?: viewModel.uiState.value.position
+                    ?: state.value.position
 
                 SearchScreenContainer(
                     modifier = Modifier.sharedElement(
@@ -50,7 +53,7 @@ fun MainScreen() {
                     },
                     images  = images,
                     searchState =
-                    viewModel.uiState.value.savedQuery,
+                    state.value.savedQuery,
                     onSearch = { query -> viewModel.search(query) },
                     position = position
                 )
@@ -61,7 +64,7 @@ fun MainScreen() {
                 arguments = listOf(navArgument("position") { type = NavType.IntType})
             )  { backStackEntry ->
                 val position = backStackEntry.arguments?.getInt("position")
-                    ?: viewModel.uiState.value.position
+                    ?: state.value.position
 
                 ImagePagerContainer(
                     modifier = Modifier.sharedElement(

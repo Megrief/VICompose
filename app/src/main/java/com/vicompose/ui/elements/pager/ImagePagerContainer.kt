@@ -2,7 +2,6 @@ package com.vicompose.ui.elements.pager
 
 import android.content.Context
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -21,17 +20,13 @@ fun ImagePagerContainer(
 ) {
     val context = LocalContext.current
 
-
-
-    Surface(modifier = Modifier.fillMaxSize()) {
-        ImagePager(
-            modifier = modifier,
-            images = images,
-            index = position,
-            navigate = { navigate(position) },
-            openInWeb = { onOpenInWeb(context, it) }
-        )
-    }
+    ImagePager(
+        modifier = modifier.fillMaxSize(),
+        images = images,
+        index = position,
+        navigate = { navigate(position) },
+        openInWeb = { onOpenInWeb(context, it) }
+    )
 }
 
 @Preview(showBackground = true, showSystemUi = true)

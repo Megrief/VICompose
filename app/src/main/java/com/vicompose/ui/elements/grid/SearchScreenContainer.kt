@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -47,19 +46,17 @@ fun SearchScreenContainer(
         }
     }
     ) {
-        Surface(modifier = Modifier
-            .fillMaxSize()
-            .padding(it)) {
-            Column {
-                GridImages(
-                    modifier = Modifier,
-                    images = images,
-                    onClick = { index ->
-                        navigate(index)
-                    },
-                    position = position
-                )
-            }
+        Column {
+            GridImages(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(it),
+                images = images,
+                onClick = { index ->
+                    navigate(index)
+                },
+                position = position
+            )
         }
     }
 

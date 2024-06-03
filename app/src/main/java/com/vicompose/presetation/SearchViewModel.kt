@@ -3,9 +3,6 @@ package com.vicompose.presetation
 import android.content.Context
 import android.net.Uri
 import androidx.browser.customtabs.CustomTabsIntent
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.State
-import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
@@ -13,14 +10,16 @@ import com.vicompose.core.entity.Image
 import com.vicompose.core.usecases.SearchUseCase
 import com.vicompose.util.debounce
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class SearchViewModel(
     private val searchRepo: SearchUseCase<Image>,
 ) : ViewModel() {
 
-    private val _uiState: MutableState<UiState>  = mutableStateOf(UiState())
-    val uiState: State<UiState> get() = _uiState
+    private val _uiState: MutableStateFlow<UiState> = MutableStateFlow(UiState())
+    val uiState: StateFlow<UiState> get() = _uiState
 
     private val searchRequest: (String) -> Unit = debounce(SEARCH_DELAY, viewModelScope, true) { query ->
         viewModelScope.launch(Dispatchers.IO) {
